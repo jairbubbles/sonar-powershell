@@ -23,7 +23,7 @@ SonarQubeAnalysis.ps1
 ```
 
 Analysis parameters (more infos [here](http://docs.sonarqube.org/display/SONAR/Analysis+Parameters)):
-- `hostUrl`: https:sonarqube.com/ in most cases
+- `hostUrl`: https://sonarqube.com/ in most cases
 - `login`: The authentication token of a SonarQube user with Execute Analysis permission. For SonarQube.com you just need to log in with your GitHub account and generate a user token from the “My Account” > “Security” page.
 - `projectName`: Name of the project that will be displayed on the web interface.
 - `projectKey`: The project key that is unique for each project. Allowed characters are: letters, numbers, -, _, . and :, with at least one non-digit.
@@ -39,6 +39,11 @@ GitHub specific arguments (more infos [here](http://docs.sonarqube.org/display/P
 
 ## AppVeyor integration
 With the appveyor script you only have to fill `sources` and `buildWrapperCommand`.
+
+It assumes that the 3 following variables are defined:
+- `SONAR_HOST_URL` => should point to the public URL of the SQ server (e.g. : https://sonarqube.com)
+- `SONAR_TOKEN` => token of a user who has the "Execute Analysis" permission on the SQ server
+- `GITHUB_TOKEN` => token for commenting pull requests in GitHub
 
 Full analysis are only done on the master branch.
 
