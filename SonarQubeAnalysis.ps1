@@ -19,7 +19,7 @@ Param(
 	[parameter(Mandatory=$true, HelpMessage="Comma-separated paths to directories containing source files.\nCompatible with Maven. If not set, the source code is retrieved from the default Maven source code location. ")]
 	[alias("s")]
 	[string]$sources,
-	#Option build wrapper command (for C/C++/Objective-C builds)
+	#Option build wrapper command (for C/C++/Objective-C builds) (see http://docs.sonarqube.org/pages/viewpage.action?pageId=3080359)
 	[string]$buildWrapperCommand,
 	# Pull request specific arguments (see http://docs.sonarqube.org/display/PLUG/GitHub+Plugin)
 	[parameter(HelpMessage="Pull request number")]
@@ -54,7 +54,7 @@ if($buildWrapperCommand)
 	# Compile with BuildWrapper
 	
     $builderCmdLine = ".\BuildWrapper\build-wrapper-win-x86\build-wrapper-win-x86-64.exe --out-dir 'Build' $buildWrapperCommand"
-	Write-Output $builderCmdLine
+
 	Invoke-Expression $builderCmdLine
 	
 	$scannerCmdLine += ' -D sonar.cfamily.build-wrapper-output=Build'
@@ -65,7 +65,5 @@ if($gitHubPullRequest)
 {
 	$scannerCmdLine += " -D sonar.analysis.mode=preview -D sonar.github.oauth='$gitHubOauth' -D sonar.github.repository='$gitHubRepository' -D sonar.github.pullRequest='$gitHubPullRequest'"
 }
-
-Write-Output $scannerCmdLine
 
 Invoke-Expression $scannerCmdLine
