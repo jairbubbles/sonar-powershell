@@ -30,7 +30,7 @@ Analysis parameters (more infos [here](http://docs.sonarqube.org/display/SONAR/A
 - `projectVersion`: Comma-separated paths to directories containing source files.
 
 C/C++/Objective-C specicifc arguments (more infos [here](http://docs.sonarqube.org/pages/viewpage.action?pageId=3080359)):
-- `buildWrapperCommand`: You need to give the command for build the solutions. e.g. : msbuild 'src/masolution.com'
+- `buildWrapperCommand`: Command for building your project (e.g. : msbuild 'src/masolution.com')
 
 GitHub specific arguments (more infos [here](http://docs.sonarqube.org/display/PLUG/GitHub+Plugin)):
 - `gitHubPullRequest`: Pull request number
