@@ -27,7 +27,8 @@ Analysis parameters (more infos [here](http://docs.sonarqube.org/display/SONAR/A
 - `login`: The authentication token of a SonarQube user with Execute Analysis permission. For SonarQube.com you just need to log in with your GitHub account and generate a user token from the “My Account” > “Security” page.
 - `projectName`: Name of the project that will be displayed on the web interface.
 - `projectKey`: The project key that is unique for each project. Allowed characters are: letters, numbers, -, _, . and :, with at least one non-digit.
-- `projectVersion`: Comma-separated paths to directories containing source files.
+- `projectVersion`: Project version number.
+- `source`: Comma-separated paths to directories containing source files.
 
 C/C++/Objective-C specicifc arguments (more infos [here](http://docs.sonarqube.org/pages/viewpage.action?pageId=3080359)):
 - `buildWrapperCommand`: Command for building your project (e.g. : msbuild 'src/masolution.com')
