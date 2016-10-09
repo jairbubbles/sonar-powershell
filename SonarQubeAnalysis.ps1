@@ -1,32 +1,68 @@
 
+<#
+
+.SYNOPSIS
+SonarQubeAnalysis.ps1 helps making SonarQube analysis on windows machines
+
+.DESCRIPTION
+SonarQube is a static analysis tool. This script is a helper that will download all necessary executables for making such an analysis.
+Latest version can be found on https://github.com/jairbubbles/sonar-powershell.
+
+.PARAMETER hostUrl
+    MANDATORY: Server URL (see http://docs.sonarqube.org/display/SONAR/Analysis+Parameters).
+	
+.PARAMETER login
+    MANDATORY: The authentication token of a SonarQube user with Execute Analysis permission.
+
+.PARAMETER projectName
+    MANDATORY: Name of the project that will be displayed on the web interface.
+	
+.PARAMETER projectKey
+    MANDATORY: The project key that is unique for each project.\nAllowed characters are: letters, numbers, '-', '_', '.' and ':', with at least one non-digit.
+	
+.PARAMETER projectVersion
+    MANDATORY: The project version.
+	
+.PARAMETER sources
+    MANDATORY: Comma-separated paths to directories containing source files.
+	
+.PARAMETER buildWrapperCommand
+    OPTIONAL: Build wrapper command (for C/C++/Objective-C builds) (see http://docs.sonarqube.org/pages/viewpage.action?pageId=3080359).
+	
+.PARAMETER gitHubPullRequest
+    OPTIONAL: Pull request number (see http://docs.sonarqube.org/display/PLUG/GitHub+Plugin).
+	
+.PARAMETER gitHubOauth
+    OPTIONAL: Personal access token generated in GitHub for the technical user.
+	
+.PARAMETER gitHubRepository
+    OPTIONAL: Identification of the repository. Format is: <organisation/repo>. Exemple: SonarSource/sonarqube.
+#>
+
 Param(
-	# Analysis parameters (see http://docs.sonarqube.org/display/SONAR/Analysis+Parameters)
-	[parameter(Mandatory=$true,HelpMessage="Server URL ")]
+	# Analysis parameters 
+	[parameter(Mandatory=$true)]
 	[alias("h")]
 	[string]$hostUrl,
-	[parameter(Mandatory=$true,HelpMessage="The authentication token of a SonarQube user with Execute Analysis permission.")]
+	[parameter(Mandatory=$true)]
 	[alias("l")]
 	[string]$login,
-	[parameter(Mandatory=$true,HelpMessage="Name of the project that will be displayed on the web interface.\nSet through <name> when using Maven.")]
+	[parameter(Mandatory=$true)]
 	[alias("n")]
 	[string]$projectName, 
-	[parameter(Mandatory=$true,HelpMessage="The project key that is unique for each project.\nAllowed characters are: letters, numbers, '-', '_', '.' and ':', with at least one non-digit.\nWhen using Maven, it is automatically set to <groupId>:<artifactId>.")]
+	[parameter(Mandatory=$true)]
 	[alias("k")]
 	[string]$projectKey,
-	[parameter(Mandatory=$true,HelpMessage="The project version.\nSet through <version> when using Maven.")]
+	[parameter(Mandatory=$true)]
 	[alias("v")]
 	[string]$projectVersion,
-	[parameter(Mandatory=$true, HelpMessage="Comma-separated paths to directories containing source files.\nCompatible with Maven. If not set, the source code is retrieved from the default Maven source code location. ")]
+	[parameter(Mandatory=$true)]
 	[alias("s")]
 	[string]$sources,
-	#Option build wrapper command (for C/C++/Objective-C builds) (see http://docs.sonarqube.org/pages/viewpage.action?pageId=3080359)
 	[string]$buildWrapperCommand,
-	# Pull request specific arguments (see http://docs.sonarqube.org/display/PLUG/GitHub+Plugin)
-	[parameter(HelpMessage="Pull request number")]
+	# GitHub
 	[int]$gitHubPullRequest,
-	[parameter(HelpMessage="Personal access token generated in GitHub for the technical user ")]
 	[string]$gitHubOauth,	
-	[parameter(HelpMessage="Identification of the repository. Format is: <organisation/repo>. Exemple: SonarSource/sonarqube	")]
 	[string]$gitHubRepository
 )
 
