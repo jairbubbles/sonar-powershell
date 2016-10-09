@@ -46,6 +46,8 @@ It assumes that the 3 following variables are defined:
 - `SONAR_TOKEN` => token of a user who has the "Execute Analysis" permission on the SQ server
 - `GITHUB_TOKEN` => token for commenting pull requests in GitHub
 
+Just go in settings / Environment to set up these variables.
+
 Full analysis are only done on the master branch.
 
 For pull requests a fast analysis is done and comments will be added to the pull request. You're encouraged to create a technical user for that purpose and generate a token for that user with the "public_repo" scope. You can see that on the SonarQube sample project https://github.com/bellingard/multi-language-project/pull/5
