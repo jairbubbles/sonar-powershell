@@ -46,7 +46,9 @@ It assumes that the 3 following variables are defined:
 - `SONAR_TOKEN` => token of a user who has the "Execute Analysis" permission on the SQ server
 - `GITHUB_TOKEN` => token for commenting pull requests in GitHub
 
-Just go in settings / Environment to set up these variables.
+Just go in settings / Environment to set up these variables:
+
+![settings](doc/AppVeyor_settings.png)
 
 Full analysis are only done on the master branch.
 
