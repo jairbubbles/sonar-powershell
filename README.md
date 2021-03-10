@@ -1,4 +1,7 @@
 # sonar-powershell
+
+It's a test
+
 Simple PowerShell scripts to help making SonarQube analysis on windows machines.
 
 It's based on the [shell script](https://github.com/bellingard/multi-language-project/blob/master/runSonarQubeAnalysis.sh) provided by SonarQube.
@@ -8,6 +11,7 @@ There are for now 2 scripts:
 - SonarQubeAnalysisForAppVeyor.ps1 which is meant to be used on http://AppVeyor.com. Most of the parameters are already filled with environment variables.
 
 ## Command line details
+
 ```
 SonarQubeAnalysis.ps1 
 [-hostUrl] <string>
@@ -39,6 +43,7 @@ GitHub specific arguments (more infos [here](http://docs.sonarqube.org/display/P
 - `gitHubRepository`: Identification of the repository. Format is: <organisation/repo>. Exemple: SonarSource/sonarqube
 
 ## AppVeyor integration
+
 With the appveyor script you only have to fill `sources` and `buildWrapperCommand`.
 
 It assumes that the 3 following variables are defined:
